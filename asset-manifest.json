@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/conv_frontend_react/static/css/main.db7cc85c.css",
+    "main.js": "/conv_frontend_react/static/js/main.a1d54940.js",
+    "index.html": "/conv_frontend_react/index.html",
+    "main.db7cc85c.css.map": "/conv_frontend_react/static/css/main.db7cc85c.css.map",
+    "main.a1d54940.js.map": "/conv_frontend_react/static/js/main.a1d54940.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db7cc85c.css",
+    "static/js/main.a1d54940.js"
+  ]
+}
