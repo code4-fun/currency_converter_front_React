@@ -3,7 +3,7 @@ import CurrencyService from "../api/CurrencyService";
 
 export const convert = async () => {
   if(store.charCodeFrom !== 'У меня есть' && store.charCodeTo !== 'Хочу приобрести'
-      && parseInt(store.sumToConvert) !== 0 && store.sumToConvert !== ''
+      && parseInt(store.sumToConvert) > 0 && store.sumToConvert !== ''
       && store.sumToConvert !== undefined){
     const result = await CurrencyService
         .convert(store.charCodeFrom, store.charCodeTo, store.sumToConvert)

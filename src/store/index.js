@@ -12,6 +12,12 @@ class Store {
   displayStat = false
   history = []
   stat = []
+  selectedListPresentation = 'Пагинация'
+  historyTotalPages = 0
+  historyTotalElements = 0
+  selectedNumberOfElements = 20
+  historyCurrentPage = 1
+  selectedSort = 'Сортировка'
 
   constructor(){
     makeAutoObservable(this)
@@ -57,14 +63,25 @@ class Store {
     this.stat = param
   }
 
-  async showHistory() {
+  async showHistory(page, size) {
     this.displayHistory = !this.displayHistory
     if(this.displayStat){
       this.displayStat = !this.displayStat
     }
-    const result = await CurrencyService.getHistory()
+    await this.fetchHistoryPaged(page, size)
+  }
+
+  async fetchHistoryPaged(page, size) {
+    const result = await CurrencyService.getHistoryPaged(page, size)
     runInAction(() => {
-      this.history = result.data
+      if(this.selectedListPresentation === 'Пагинация'){
+        this.history = result.data.content
+      } else if (this.selectedListPresentation === 'Бесконечная прокрутка'){
+        this.history = [...this.history, ...result.data.content]
+      }
+      this.historyTotalElements = result.data.totalElements
+      this.historyTotalPages = result.data.totalPages
+      this.historyTotalPages = result.data.totalPages
     })
   }
 
@@ -82,6 +99,22 @@ class Store {
   reset() {
     this.sumToConvert = 0
     this.sumConverted = ''
+  }
+
+  setSelectedListPresentation(param){
+    this.selectedListPresentation = param
+  }
+
+  setSelectedNumberOfElements(param){
+    this.selectedNumberOfElements = param
+  }
+
+  setHistoryCurrentPage(param){
+    this.historyCurrentPage = param
+  }
+
+  setSelectedSort(param) {
+    this.selectedSort = param
   }
 }
 

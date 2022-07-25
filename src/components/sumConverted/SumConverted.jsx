@@ -7,8 +7,8 @@ const SumConverted = observer(() => {
   return (
       <div>
         <div className={classes.resultContainer}>
-          <div className={['form-control', classes.resultChild].join(' ')}>
-            <h1>{store.sumConverted}</h1>
+          <div className={['form-control'].join(' ')}>
+            <h1>Приложение недоступно до конца месяца</h1>
           </div>
           <div className={'form-control'}>
             <div className={classes.dateOfRate}>

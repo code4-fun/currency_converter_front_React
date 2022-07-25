@@ -1,0 +1,19 @@
+.pageButtonsWrapper {
+  display: flex;
+  margin-top: 15px;
+}
+.pageButton {
+  border: 1px solid #ccc;
+  padding: 5px 10px 3px;
+  margin-left: 5px;
+  &:hover{
+    cursor: pointer;
+    border-color: #333;
+  }
+  &:first-child{
+    margin-left: 0;
+  }
+}
+.currentPageButton {
+  border: 3px solid #333;
+}

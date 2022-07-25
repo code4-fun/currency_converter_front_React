@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import SumConverted from "../sumConverted/SumConverted";
 import SumToConvert from "../sumToConvert/SumToConvert";
 import store from "../../store";
+import Button from "../ui/button/Button";
 
 const Form = observer(() => {
   return (
@@ -14,9 +15,9 @@ const Form = observer(() => {
         <SelectedCharCodeTo />
         <SumConverted />
 
-        <button className="btn" onClick={() => store.showHistory()}>Показать историю</button>
-        <button className="btn" onClick={() => store.showStat()}>Показать статистику за неделю</button>
-        <button className="btn" onClick={() => store.reset()}>Reset</button>
+        <Button onClick={() => store.showHistory()}>Показать историю</Button>
+        <Button onClick={() => store.showStat()}>Показать статистику за неделю</Button>
+        <Button onClick={() => store.reset()}>Reset</Button>
       </div>
   );
 });
