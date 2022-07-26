@@ -2,11 +2,11 @@ import axios from "axios";
 
 export default class CurrencyService{
   static async getCurrencies(){
-    return await axios.get('https://conv-back.herokuapp.com')
+    return await axios.get('https://conv-back2.herokuapp.com')
   }
 
   static async convert(from, to, amount){
-    return await axios.get('https://conv-back.herokuapp.com/convert', {
+    return await axios.get('https://conv-back2.herokuapp.com/convert', {
       params:{
         curfrom: from,
         curto:to,
@@ -16,15 +16,15 @@ export default class CurrencyService{
   }
 
   static async getHistory(){
-    return await axios.get('https://conv-back.herokuapp.com/history')
+    return await axios.get('https://conv-back2.herokuapp.com/history')
   }
 
   static async getStat(){
-    return await axios.get('https://conv-back.herokuapp.com/stat')
+    return await axios.get('https://conv-back2.herokuapp.com/stat')
   }
 
   static async getHistoryPaged(page, size){
-    return await axios.get('https://conv-back.herokuapp.com/history/paged', {
+    return await axios.get('https://conv-back2.herokuapp.com/history/paged', {
       params: {
         page: page,
         size: size

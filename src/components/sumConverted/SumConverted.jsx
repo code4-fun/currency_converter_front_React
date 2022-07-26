@@ -8,7 +8,7 @@ const SumConverted = observer(() => {
       <div>
         <div className={classes.resultContainer}>
           <div className={['form-control'].join(' ')}>
-            <h1>Приложение будет недоступно до конца месяца</h1>
+            <h1>{store.sumConverted}</h1>
           </div>
           <div className={'form-control'}>
             <div className={classes.dateOfRate}>
