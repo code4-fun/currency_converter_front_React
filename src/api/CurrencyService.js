@@ -23,7 +23,7 @@ export default class CurrencyService{
     return await axios.get('https://conv-back2.herokuapp.com/stat')
   }
 
-  static async getHistoryPaged(page, size){
+  static async getHistoryPaged(page, size, sort){
     return await axios.get('https://conv-back2.herokuapp.com/history/paged', {
       params: {
         page: page,
