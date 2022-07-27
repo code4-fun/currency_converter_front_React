@@ -6,20 +6,22 @@ import ListDisplaySelectorsFrame
   from "../listDisplaySelectors/ListDisplaySelectorsFrame";
 import PageButtons from "../pageButtons/PageButtons";
 import {useObserver} from "../../hooks/useObserver";
+import {useSelectedListPresentation} from "../../hooks/useSelectedListPresentation";
 
 const Statistics = observer(() => {
   const lastElement = useRef()
   useObserver(lastElement)
+  useSelectedListPresentation()
 
   useEffect(() => {
     if(store.selectedNumberOfElements === 'Показать все'){
-      store.fetchHistoryPaged(1, store.historyTotalElements)
+      store.fetchHistoryPaged(1, store.historyTotalElements, store.selectedSort)
         .then(i => i)
     } else {
-      store.fetchHistoryPaged(store.historyCurrentPage, store.selectedNumberOfElements)
+      store.fetchHistoryPaged(store.historyCurrentPage, store.selectedNumberOfElements, store.selectedSort)
         .then(i => i)
     }
-  }, [store.historyCurrentPage, store.selectedNumberOfElements])
+  }, [store.historyCurrentPage, store.selectedNumberOfElements, store.selectedSort])
 
   return (
       <div>

@@ -15,7 +15,11 @@ const Form = observer(() => {
         <SelectedCharCodeTo />
         <SumConverted />
 
-        <Button onClick={() => store.showHistory()}>Показать историю</Button>
+        <Button onClick={() => {
+          store.showHistory().then(i => i)
+          store.setHistoryCurrentPage(1)}}>
+          Показать историю
+        </Button>
         <Button onClick={() => store.showStat()}>Показать статистику за неделю</Button>
         <Button onClick={() => store.reset()}>Reset</Button>
       </div>

@@ -11,10 +11,12 @@ const SelectedSort = observer(() => {
         selectedOption={store.selectedSort}
         options={[
           {value: 'Сортировка', disabled: true},
-          {value: 'todo'}
+          {value: 'По дате (возр)'},
+          {value: 'По дате (убыв)'},
         ]}
         onChange={i => store.setSelectedSort(i)}
         additionalClasses={classes.listDisplaySelectors}
+        isDisabled={store.selectedSortIsDisabled}
       />
     </div>
   );

@@ -18,6 +18,8 @@ class Store {
   selectedNumberOfElements = 20
   historyCurrentPage = 1
   selectedSort = 'Сортировка'
+  selectedSortIsDisabled = false;
+  sortParam = ''
 
   constructor(){
     makeAutoObservable(this)
@@ -71,8 +73,16 @@ class Store {
     await this.fetchHistoryPaged(page, size)
   }
 
-  async fetchHistoryPaged(page, size) {
-    const result = await CurrencyService.getHistoryPaged(page, size)
+  async fetchHistoryPaged(page, size, sort) {
+
+    switch(sort){
+      case 'По дате (возр)': this.sortParam = 'dateTime'
+        break
+      case 'По дате (убыв)': this.sortParam = 'dateTime,desc'
+        break
+    }
+
+    const result = await CurrencyService.getHistoryPaged(page, size, this.sortParam)
     runInAction(() => {
       if(this.selectedListPresentation === 'Пагинация'){
         this.history = result.data.content
@@ -115,6 +125,10 @@ class Store {
 
   setSelectedSort(param) {
     this.selectedSort = param
+  }
+
+  setSelectedSortIsDisabled(param) {
+    this.selectedSortIsDisabled = param
   }
 }
 

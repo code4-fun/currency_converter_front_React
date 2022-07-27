@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Select = ({additionalClasses, options = [], selectedOption, onChange}) => {
+const Select = ({additionalClasses, options = [], selectedOption, onChange, isDisabled}) => {
   return (
       <div>
         <select
             className={[additionalClasses, 'form-control'].join(' ')}
             value={selectedOption}
-            onChange={event => onChange(event.target.value)}>
+            onChange={event => onChange(event.target.value)}
+            disabled={isDisabled}>
           {
             options.map(item =>
                 <option
